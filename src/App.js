@@ -11,6 +11,7 @@ class App extends React.Component {
 
     this.state = {
       content: "0",
+      calculated: false,
     }
   }
 
@@ -48,12 +49,26 @@ class App extends React.Component {
 
   handleClick(e) {
     let num = e.currentTarget.innerHTML.trim();
+    let content = this.state.content;
+    let operations = /[+÷x-]/;
+
+    if (this.state.calculated) {
+      console.log("test!");
+      content = "0";
+      this.setState({content: "0", calculated: false});
+    }
     // multiple decimal check
-    if (num === "." && this.state.content.includes('.')) {
+    if (num === "." && content.includes('.')) {
       return;
     }
 
-    if (this.state.content === "0") {
+    let lastCharacter = content[content.length -1];
+
+    if (lastCharacter.match(operations) && num.match(operations)) {
+      return;
+    }
+
+    if (content === "0") {
       if (num === ".") {
         this.setState({content: "0" + num});
       } else {
@@ -61,7 +76,7 @@ class App extends React.Component {
       }
 
     } else {
-      this.setState({content: this.state.content + num});
+      this.setState({content: content + num});
     }
   }
 
@@ -83,11 +98,12 @@ class App extends React.Component {
 
     try {
       calc = eval(str)
+      calc = calc.toString();
     } catch (error) {
       calc = "Error";
     }
 
-    this.setState({content: calc});
+    this.setState({content: calc, calculated: true});
   }
 }
 
