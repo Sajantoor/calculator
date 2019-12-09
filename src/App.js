@@ -21,27 +21,28 @@ class App extends React.Component {
         <h1 className="display"> {this.state.content} </h1>
 
         <div className="keys">
-          <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> ÷ </button>
-          <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> x </button>
-          <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> - </button>
-          <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> + </button>
+          <div className="numbers">
+            <button onClick={(e) => this.handleClick(e)}> 7 </button>
+            <button onClick={(e) => this.handleClick(e)}> 8 </button>
+            <button onClick={(e) => this.handleClick(e)}> 9 </button>
+            <button onClick={(e) => this.handleClick(e)}> 4 </button>
+            <button onClick={(e) => this.handleClick(e)}> 5 </button>
+            <button onClick={(e) => this.handleClick(e)}> 6 </button>
+            <button onClick={(e) => this.handleClick(e)}> 1 </button>
+            <button onClick={(e) => this.handleClick(e)}> 2 </button>
+            <button onClick={(e) => this.handleClick(e)}> 3 </button>
+            <button onClick={(e) => this.handleClick(e)}> . </button>
+            <button onClick={(e) => this.handleClick(e)}> 0 </button>
+            <button onClick={this.clear}> AC </button>
+          </div>
 
-          <button onClick={(e) => this.handleClick(e)}> 7 </button>
-          <button onClick={(e) => this.handleClick(e)}> 8 </button>
-          <button onClick={(e) => this.handleClick(e)}> 9 </button>
-
-          <button className="operatorKeys" onClick={this.calculate}> = </button>
-
-          <button onClick={(e) => this.handleClick(e)}> 4 </button>
-          <button onClick={(e) => this.handleClick(e)}> 5 </button>
-          <button onClick={(e) => this.handleClick(e)}> 6 </button>
-          <button onClick={(e) => this.handleClick(e)}> 1 </button>
-          <button onClick={(e) => this.handleClick(e)}> 2 </button>
-          <button onClick={(e) => this.handleClick(e)}> 3 </button>
-          <button onClick={(e) => this.handleClick(e)}> 0 </button>
-          <button onClick={(e) => this.handleClick(e)}> . </button>
-          <button onClick={this.clear}> AC </button>
-
+          <div className="operations">
+            <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> + </button>
+            <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> - </button>
+            <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> x </button>
+            <button className="operatorKeys" onClick={(e) => this.handleClick(e)}> ÷ </button>
+            <button className="operatorKeys" onClick={this.calculate}> = </button>
+          </div>
         </div>
       </div>
     )
@@ -52,11 +53,6 @@ class App extends React.Component {
     let content = this.state.content;
     let operations = /[+÷x-]/;
 
-    if (this.state.calculated) {
-      console.log("test!");
-      content = "0";
-      this.setState({content: "0", calculated: false});
-    }
     // multiple decimal check
     if (num === "." && content.includes('.')) {
       return;

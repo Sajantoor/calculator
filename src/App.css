@@ -15,20 +15,38 @@ button {
 }
 
 h1 {
-  /* color: #FFF; */
+  color: #FFF;
   text-align: right;
   padding: 1% 5% 1% 1%;
+  background-color: #70a1ff;
+  margin: 0;
+  font-size: 5em;
 }
 
-/* .keys {
+.numbers {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  width: 90%;
+  height: 85%;
+  position: absolute;
+  background-color: #f1f2f6;
 }
 
 .keys button {
   width: 10vmax;
   height: 10vmax;
-  border-radius: 50%;
-  background-color: #999;
-  font-size: 5em;
-} */
+  font-size: 2em;
+}
+
+.operations {
+  display: grid;
+  grid-template-columns: repeat(1, 4fr);
+  position: absolute;
+  right: 0;
+    height: 85%;
+  background-color: #5352ed;
+}
+
+.operations button {
+  height: 8vmax;
+}
