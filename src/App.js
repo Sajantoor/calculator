@@ -54,7 +54,8 @@ class App extends React.Component {
     let operations = /[+÷x-]/;
 
     // multiple decimal check
-    if (num === "." && content.includes('.')) {
+    let decimalCheck = content.split(operations);
+    if (num === "." && decimalCheck[decimalCheck.length - 1].includes('.')) {
       return;
     }
 
